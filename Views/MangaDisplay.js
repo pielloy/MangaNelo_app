@@ -1,18 +1,23 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { ActivityIndicator, StyleSheet, Text, View, Image } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, Image, TouchableOpacity  } from 'react-native';
 
 class MangaDisplay extends React.Component {
     constructor () {
         super();
     }
 
+    viewClicked () {
+        console.log("Arg");
+    }
+
     render() {
         console.log(this.props.image);
-        return (<View style={ displayer.manga }>
-            <Image source={{ uri: this.props.image }} style={displayer.image }></Image>
-            <Text style={displayer.text}>{ this.props.name }</Text>
-        </View>);
+        return (
+            <TouchableOpacity style={ displayer.manga } onPress={() => this.viewClicked() }>
+                <Image source={{ uri: this.props.image }} style={displayer.image }></Image>
+                <Text style={displayer.text}>{ this.props.name }</Text>
+            </TouchableOpacity>);
     }
 };
 

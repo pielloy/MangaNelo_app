@@ -32,15 +32,19 @@ class HomeScreen extends React.Component {
         }) // fetch page
     }
 
+    onClickManga() {
+        console.log("ARG");
+    }
+
     render () {
         let content = [];
 
         if (this.NewMangas.length == 0) {
-            content = <ActivityIndicator animating={ true } size="large" color="tomato" />;
+            content = <ActivityIndicator animating={ true } size="large" color="tomato" />; 
         } else {
             let i = 0;
             this.NewMangas.forEach((element) => {
-                content.push(<MangaDisplay key={ i } name={ element.name } image={element.image}></MangaDisplay>);
+                content.push(<MangaDisplay key={ i } name={ element.name } image={element.image} onPress={() => this.onClickManga()}></MangaDisplay>);
                 i++; 
             });
         }
