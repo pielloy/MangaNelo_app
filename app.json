@@ -1,0 +1,12 @@
+{
+  "name": "MangaNeloApp",
+  "displayName": "MangaNeloApp",
+  "expo": {
+    "name": "MangaNeloApp",
+    "slug": "MangaNeloApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
