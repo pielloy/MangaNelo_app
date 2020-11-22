@@ -72,7 +72,7 @@ export default function App() {
       >
         <Tab.Screen name="Home" component={ HomeScreen_f } />
         <Tab.Screen name="FavoriteScreen" component={ FavoriteScreen_f } />
-        <Tab.Screen name="Profile" component={ FavoriteScreen_f } />
+        <Tab.Screen name="Profile" component={ UserScreen_f } />
       </Tab.Navigator>
     </NavigationContainer>
   );
