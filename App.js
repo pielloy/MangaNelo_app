@@ -6,6 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import HomeScreen from './Views/HomeScreen';
 import FavoriteScreen from './Views/FavoriteScreen';
+import UserScreen from './Views/UserScreen';
 
 function HomeScreen_f() {
 
@@ -14,6 +15,10 @@ function HomeScreen_f() {
 
 function FavoriteScreen_f() {
   return (<FavoriteScreen></FavoriteScreen>);
+}
+
+function UserScreen_f() {
+  return (<UserScreen></UserScreen>);
 }
 
 const Tab = createBottomTabNavigator();
@@ -49,6 +54,9 @@ export default function App() {
             case "FavoriteScreen":
               iconName = 'favorite';
               break;
+            case "Profile":
+              iconName = 'account-circle';
+              break;
             default:
           }
 
@@ -64,6 +72,7 @@ export default function App() {
       >
         <Tab.Screen name="Home" component={ HomeScreen_f } />
         <Tab.Screen name="FavoriteScreen" component={ FavoriteScreen_f } />
+        <Tab.Screen name="Profile" component={ FavoriteScreen_f } />
       </Tab.Navigator>
     </NavigationContainer>
   );
