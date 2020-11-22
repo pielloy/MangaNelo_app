@@ -11,7 +11,7 @@ class MangaDisplay extends React.Component {
         console.log(this.props.image);
         return (<View style={ displayer.manga }>
             <Image source={{ uri: this.props.image }} style={displayer.image }></Image>
-            <Text>{ this.props.name }</Text>
+            <Text style={displayer.text}>{ this.props.name }</Text>
         </View>);
     }
 };
@@ -23,7 +23,13 @@ const displayer = StyleSheet.create({
     },
     image: {
         height: 200,
-        margin: 5
+        margin: 5,
+        borderTopRightRadius: 5,
+        borderTopLeftRadius: 5
+    },
+    text: {
+        color: 'white',
+        textAlign: 'center'
     }
 });
 

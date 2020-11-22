@@ -18,9 +18,21 @@ function FavoriteScreen_f() {
 
 const Tab = createBottomTabNavigator();
 
+const MyTheme = {
+  dark: false,
+  colors: {
+    primary: 'rgb(255, 45, 85)',
+    background: '#161B21',
+    card: '#161B21',
+    text: 'rgb(28, 28, 30)',
+    border: 'rgb(199, 199, 204)',
+    notification: 'rgb(255, 69, 58)',
+  },
+};
+
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
       
       screenOptions={({ route }) => ({
