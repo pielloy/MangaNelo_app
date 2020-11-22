@@ -8,10 +8,12 @@ class UserScreen extends React.Component {
     constructor() {
         super()
         this.state = {
-            email: '',
+            username: '',
             password: '',
-            captcharImg: ''
+            captcharImg: '',
+            captchar: ''
         };
+        this.handleLogin = this.handleLogin.bind(this);
     }
  
     componentDidMount () {
@@ -26,6 +28,35 @@ class UserScreen extends React.Component {
             })
         })
     }
+
+    handleLogin() {
+        var details = {
+            'user': this.state.username,
+            'pass': this.state.password,
+            'captchar': this.state.captchar
+        };
+        
+        var formBody = [];
+        for (var property in details) {
+          var encodedKey = encodeURIComponent(property);
+          var encodedValue = encodeURIComponent(details[property]);
+          formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+        
+        fetch('https://user.manganelo.com/login_handle', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body: formBody
+        }).then((response) => {
+            response.text().then((text) => {
+                console.log(text)
+            })
+        })
+    }
+
     render () {
         return (
             <View style={ styles.container }>
@@ -33,9 +64,9 @@ class UserScreen extends React.Component {
                 <View style={styles.inputView} >
                     <TextInput
                         style={styles.inputText}
-                        placeholder="Email..."
+                        placeholder="Username..."
                         placeholderTextColor="#003f5c"
-                        onChangeText={text => this.setState({email: text})}
+                        onChangeText={text => this.setState({username: text})}
                     />
                 </View>
                 <View style={styles.inputView} >
@@ -54,14 +85,14 @@ class UserScreen extends React.Component {
                             style={styles.inputText}
                             placeholder="Captchar..."
                             placeholderTextColor="#003f5c"
-                            onChangeText={text => this.setState({password: text})}
+                            onChangeText={text => this.setState({captchar: text})}
                         />
                     </View>
                 </View>
                 <TouchableOpacity>
                     <Text style={styles.forgot}>Forgot password ?</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.loginBtn}>
+                <TouchableOpacity style={styles.loginBtn} onPress={this.handleLogin}>
                     <Text style={styles.loginText}>Login</Text>
                 </TouchableOpacity>
             </View>
