@@ -55,7 +55,7 @@ export default function App() {
               iconName = 'favorite';
               break;
             case "Profile":
-              iconName = 'account-circle';
+              iconName = 'person';
               break;
             default:
           }
