@@ -30,3 +30,26 @@ const puppeteer = require('puppeteer');
 
 // https://chap.manganelo.com/manga-di117828/chapter-58     manga
 // https://s8.mkklcdnv8.com/mangakakalot/r2/rt918148/vol5_chapter_58_suspects/1.jpg  page
+
+
+
+
+
+var io = require('socket.io')(80);
+
+
+io.send('salut', { name: 'test' })
+
+io.on('salut', function (data) {
+    data.name;
+    // => 'test'
+});
+
+
+
+io_server.on('connection', function (user) {
+    user.on('salut', function () {
+        console.log("test");
+        user.send("salut", { name: 'test' });
+    });
+});
