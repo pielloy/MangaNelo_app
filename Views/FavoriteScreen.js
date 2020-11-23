@@ -2,7 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
 
-
 class FavoriteScreen extends React.Component {
     constructor() {
         super()

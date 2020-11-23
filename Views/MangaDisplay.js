@@ -8,11 +8,10 @@ class MangaDisplay extends React.Component {
     }
 
     viewClicked () {
-        console.log("Arg");
+        this.props.onPress(this.props.path);
     }
 
     render() {
-        console.log(this.props.image);
         return (
             <TouchableOpacity style={ displayer.manga } onPress={() => this.viewClicked() }>
                 <Image source={{ uri: this.props.image }} style={displayer.image }></Image>
@@ -27,10 +26,10 @@ const displayer = StyleSheet.create({
         margin: 3
     },
     image: {
-        height: 200,
+        height: 150,
         margin: 5,
         borderTopRightRadius: 5,
-        borderTopLeftRadius: 5
+        borderTopLeftRadius: 5  
     },
     text: {
         color: 'white',

@@ -13,10 +13,15 @@
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "chrome-aws-lambda": "^5.5.0",
+    "cloudflare-scraper": "^1.0.7",
+    "crypto": "^1.0.1",
     "expo": "^39.0.4",
     "expo-splash-screen": "~0.6.2",
     "expo-status-bar": "~1.0.2",
     "expo-updates": "~0.3.2",
+    "net": "^1.0.2",
+    "puppeteer": "^5.5.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "^0.63.3",
@@ -26,7 +31,9 @@
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-unimodules": "~0.11.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "url": "^0.11.0",
+    "util": "^0.12.3"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

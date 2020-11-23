@@ -2,23 +2,25 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import HomeScreen from './Views/HomeScreen';
 import FavoriteScreen from './Views/FavoriteScreen';
 import UserScreen from './Views/UserScreen';
+import MangaInfoScreen from './Views/MangaInfoScreen';
+import MangaScreen from './Views/MangaScreen';
 
-function HomeScreen_f() {
+const Stack = createStackNavigator();
 
-  return (<HomeScreen></HomeScreen>);
-}
-
-function FavoriteScreen_f() {
-  return (<FavoriteScreen></FavoriteScreen>);
-}
-
-function UserScreen_f() {
-  return (<UserScreen></UserScreen>);
+function HomeScreen_main() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Home" component={ HomeScreen }/>
+      <Stack.Screen name="MangaInfo" component={ MangaInfoScreen }/>
+      <Stack.Screen name="MangaScreen" component={ MangaScreen }/>
+    </Stack.Navigator>
+  );
 }
 
 const Tab = createBottomTabNavigator();
@@ -70,9 +72,9 @@ export default function App() {
       }}
       
       >
-        <Tab.Screen name="Home" component={ HomeScreen_f } />
-        <Tab.Screen name="FavoriteScreen" component={ FavoriteScreen_f } />
-        <Tab.Screen name="Profile" component={ FavoriteScreen_f } />
+        <Tab.Screen name="Home" component={ HomeScreen_main } />
+        <Tab.Screen name="FavoriteScreen" component={ FavoriteScreen } />
+        <Tab.Screen name="Profile" component={ UserScreen } />
       </Tab.Navigator>
     </NavigationContainer>
   );

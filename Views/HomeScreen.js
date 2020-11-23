@@ -9,14 +9,12 @@ class HomeScreen extends React.Component {
     constructor() {
         super()
 
-        this.getHtml();
         this.NewMangas = [];
     }
 
-    getHtml () {
-        const response = fetch("https://m.manganelo.com/genre-all-latest").then((response) => {
+    componentDidMount () {
+        fetch("https://m.manganelo.com/genre-all-latest").then((response) => {
             response.text().then((text) => {
-                console.log("FINISH !");
                 const scrap = cheerio.load(text);
                 let mangas = scrap('.content-genres-item');
 
@@ -32,8 +30,10 @@ class HomeScreen extends React.Component {
         }) // fetch page
     }
 
-    onClickManga() {
-        console.log("ARG");
+    onClickManga(path) {
+        this.props.navigation.navigate('MangaInfo', {
+            path: path
+        });
     }
 
     render () {
@@ -44,7 +44,7 @@ class HomeScreen extends React.Component {
         } else {
             let i = 0;
             this.NewMangas.forEach((element) => {
-                content.push(<MangaDisplay key={ i } name={ element.name } image={element.image} onPress={() => this.onClickManga()}></MangaDisplay>);
+                content.push(<MangaDisplay key={ i } name={ element.name } image={element.image} path={element.path} onPress={(path) => this.onClickManga(path)}></MangaDisplay>);
                 i++; 
             });
         }
