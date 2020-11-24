@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { ActivityIndicator, StyleSheet, Text, ScrollView, View, SafeAreaView } from 'react-native';
-import MangaDisplay from './MangaDisplay';
+import { ActivityIndicator, StyleSheet, Text, ScrollView, View } from 'react-native';
+import MangaDisplay from '../Elements/MangaDisplay';
+
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const cheerio = require('react-native-cheerio')
 
@@ -52,7 +54,7 @@ class HomeScreen extends React.Component {
         return (
             <SafeAreaView>
                 <ScrollView>
-                    <View style={{ flexWrap: 'wrap' , flexDirection: 'row', justifyContent: 'space-around', marginTop: 25, marginBottom: 25 }}>
+                    <View style={{ flexWrap: 'wrap' , flexDirection: 'row', justifyContent: 'space-around' }}>
                         { content }
                     </View>
                 </ScrollView>

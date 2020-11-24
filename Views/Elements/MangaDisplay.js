@@ -20,13 +20,18 @@ class MangaDisplay extends React.Component {
     }
 };
 
+// 225 => 321
+// width => height
+
+const width = 105;
+
 const displayer = StyleSheet.create({
     manga: {
-        width: 120,
+        width: width,
         margin: 3
     },
     image: {
-        height: 150,
+        height: Math.round(width * 321 / 225),
         margin: 5,
         borderTopRightRadius: 5,
         borderTopLeftRadius: 5  

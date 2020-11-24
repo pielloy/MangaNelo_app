@@ -12,7 +12,7 @@ class FavoriteScreen extends React.Component {
     render () {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <Text>FavoriteScreen Screen</Text>
+              <Text style={{ color: 'white' }}>FavoriteScreen Screen</Text>
             </View>
         );
     }

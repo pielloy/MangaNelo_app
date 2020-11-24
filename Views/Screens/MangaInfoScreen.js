@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View, Dimensions, ActivityIndicator, Image, ScrollView } from 'react-native';
-import ChapterDisplay from './ChapterDisplay';
+import ChapterDisplay from '../Elements/ChapterDisplay';
 
 const cheerio = require('react-native-cheerio');
 
@@ -93,7 +93,6 @@ const displayer = StyleSheet.create({
         width: 160,
         backgroundColor: 'black',
         margin: 10,
-        marginTop: 30,
         borderRadius: 10
     },
     description: {
