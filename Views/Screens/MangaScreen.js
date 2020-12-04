@@ -104,7 +104,7 @@ class MangaScreen extends React.Component {
 
         return (
             <View style={{ flexGrow: 1 }}>
-                <View style={{ flexGrow: 1, backgroundColor: 'black' }}>
+                <View style={{ flex: 1, backgroundColor: 'black' }}>
                     { this.body() }
                 </View>
                 { this.footer() }
