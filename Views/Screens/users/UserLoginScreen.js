@@ -2,8 +2,21 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 
+// Audezi345uihfz
+// pielloy
+
 const cheerio = require('react-native-cheerio')
 
+const get_set_cookies = function(headers) {
+    const set_cookies = []
+    for (const [name, value] of headers) {
+        if (name === "set-cookie") {
+            set_cookies.push(value)
+        }
+    }
+    return set_cookies
+}
+  
 class UserScreen extends React.Component {
     constructor() {
         super()
@@ -16,17 +29,12 @@ class UserScreen extends React.Component {
         this.handleLogin = this.handleLogin.bind(this);
     }
  
-    componentDidMount () {
-        fetch("https://user.manganelo.com/login?l=m_manganelo&re_l=login").then((response) => {
-            response.text().then((text) => {
-                const scrap = cheerio.load(text);
-                let captchar = scrap('.captchar');
+    async componentDidMount () {
+        const scrap = cheerio.load(this.props.page);
+        let captchar = scrap('.captchar');
 
-                let image = scrap(captchar).find(".captchar img").attr('src');
-                this.setState({captcharImg: image})
-                this.forceUpdate()
-            })
-        })
+        let image = scrap(captchar).find(".captchar img").attr('src');
+        this.setState({ captcharImg: image })
     }
 
     handleLogin() {
@@ -52,7 +60,10 @@ class UserScreen extends React.Component {
           body: formBody
         }).then((response) => {
             response.text().then((text) => {
-                console.log(text)
+                console.log(text);
+                if (text == "okie") {
+                    this.props.updateLogin();
+                }
             })
         })
     }
@@ -79,7 +90,10 @@ class UserScreen extends React.Component {
                     />
                 </View>
                 <View style={{ flexDirection: "row" }}>
-                    <Image style={styles.captcharImage} source={{ uri: this.state.captcharImg }} />
+                    {
+                        (this.state.captcharImg == "") ? null :
+                        <Image style={styles.captcharImage} source={{ uri: this.state.captcharImg }} />
+                    }
                     <View style={styles.captcharInputView} >
                         <TextInput
                             style={styles.inputText}

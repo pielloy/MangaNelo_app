@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import HomeScreen from './Views/Screens/HomeScreen';
 import FavoriteScreen from './Views/Screens/FavoriteScreen';
-import UserScreen from './Views/Screens/UserScreen';
+import UserScreen from './Views/Screens/users/UserScreen';
 import MangaInfoScreen from './Views/Screens/MangaInfoScreen';
 import MangaScreen from './Views/Screens/MangaScreen';
 import History from './Views/Screens/HistoryScreen';
@@ -20,12 +20,29 @@ const MyTheme = {
     background: '#161B21',
     card: '#161B21',
     text: 'rgb(255, 255, 255)',
-    border: 'rgb(10, 10, 10)',
+    border: 'rgb(255, 255, 255)',
     notification: 'rgb(255, 69, 58)',
   },
 };
 
 const Stack = createStackNavigator();
+
+let cookies = {
+  cookie: []
+};
+
+function cookieChanged(cookie)
+{
+  cookies.cookie = cookie;
+}
+
+function UserScreen_f() {
+  return (<UserScreen cookieChanged={ (cookie) => cookieChanged(cookie) }/>)
+}
+
+function FavoriteScreen_f() {
+  return (<FavoriteScreen cookies={cookies} />)
+}
 
 function HomeScreen_main({ navigation, route }) {
   if (route.state && route.state.index > 0)
@@ -82,9 +99,9 @@ export default function App() {
         inactiveTintColor: 'gray',
       }}>
         <Tab.Screen name="Home" component={ HomeScreen_main }/>
-        <Tab.Screen name="FavoriteScreen" component={ FavoriteScreen }/>
+        <Tab.Screen name="FavoriteScreen" component={ FavoriteScreen_f }/>
         <Tab.Screen name="History" component={ History }/>
-        <Tab.Screen name="Profile" component={ UserScreen }/>
+        <Tab.Screen name="Profile" component={ UserScreen_f }/>
       </Tab.Navigator>
     </NavigationContainer>
     </SafeAreaProvider>

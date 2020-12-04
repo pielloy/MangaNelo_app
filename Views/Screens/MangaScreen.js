@@ -103,8 +103,10 @@ class MangaScreen extends React.Component {
         }*/
 
         return (
-            <View style={{ flexGrow: 1, backgroundColor: 'black' }}>
-                { this.body() }
+            <View style={{ flexGrow: 1 }}>
+                <View style={{ flexGrow: 1, backgroundColor: 'black' }}>
+                    { this.body() }
+                </View>
                 { this.footer() }
             </View>
         );
@@ -115,9 +117,7 @@ const displayer = StyleSheet.create({
     footer: {
         width: Dimensions.get('window').width,
         height: 60,
-        position: "absolute",
         backgroundColor: '#161B21',
-        bottom: 0,
         borderTopWidth: 1,
         borderTopColor: 'white',
         flexDirection: 'row',
